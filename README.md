@@ -9,3 +9,4 @@
 - [指针](./chapter01/05-pointer)
 - [defer](./chapter01/06-defer)
 - [数组、切片](./chapter01/07-slice)
+- [map](./chapter01/08-map)
