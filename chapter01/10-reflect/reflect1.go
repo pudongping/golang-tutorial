@@ -1,6 +1,6 @@
 /*
 通过反射获取结构体中的属性以及方法
- */
+*/
 package main
 
 import (

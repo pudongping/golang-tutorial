@@ -1,6 +1,6 @@
 /*
 反射解析结构体标签 tag
- */
+*/
 package main
 
 import (
@@ -11,10 +11,10 @@ import (
 type resume struct {
 	// 可以定义多个标签，通过空格做分割
 	Name string `info:"name" doc:"我的名字"`
-	Sex string `info:"sex"`
+	Sex  string `info:"sex"`
 }
 
-func findTag(str interface{})  {
+func findTag(str interface{}) {
 	t := reflect.TypeOf(str).Elem()
 
 	for i := 0; i < t.NumField(); i++ {
@@ -27,7 +27,7 @@ func findTag(str interface{})  {
 
 }
 
-func main()  {
+func main() {
 
 	var re resume
 	findTag(&re)
