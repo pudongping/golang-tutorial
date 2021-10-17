@@ -11,3 +11,5 @@
 - [数组、切片](./chapter01/07-slice)
 - [map](./chapter01/08-map)
 - [面向对象](./chapter01/09-OOP)
+- [反射](./chapter01/10-reflect)
+- [goroutine](./chapter01/11-goroutine)
