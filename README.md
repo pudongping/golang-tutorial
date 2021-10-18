@@ -13,3 +13,4 @@
 - [面向对象](./chapter01/09-OOP)
 - [反射](./chapter01/10-reflect)
 - [goroutine](./chapter01/11-goroutine)
+- [channel](./chapter01/12-channel)
