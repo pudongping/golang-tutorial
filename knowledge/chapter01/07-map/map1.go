@@ -30,6 +30,8 @@ func main() {
 	value, ok := cityMap["China"]
 	if ok {
 		fmt.Println("找到了 value =>", value) // 找到了 value => Beijing
+	} else {
+		fmt.Println("Not found!")
 	}
 
 	fmt.Println("===========================")
