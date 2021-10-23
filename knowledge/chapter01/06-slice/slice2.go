@@ -27,4 +27,14 @@ func main() {
 	// len =7, cap = 10, slice = [0 0 0 11 22 33 44]
 	fmt.Printf("len =%d, cap = %d, slice = %v\n", len(numbers), cap(numbers), numbers)
 
+	numbers = append(numbers, 55, 66, 77)
+	// len =10, cap = 10, slice = [0 0 0 11 22 33 44 55 66 77]
+	fmt.Printf("len =%d, cap = %d, slice = %v\n", len(numbers), cap(numbers), numbers)
+
+	// 直接将一个切片追加到另一个切片的末尾
+	appendSlice := []int{12, 23, 34, 45}
+	numbers1 := append(numbers, appendSlice...) // 末尾的 ... 不能省略
+	// len =14, cap = 20, slice = [0 0 0 11 22 33 44 55 66 77 12 23 34 45]
+	fmt.Printf("len =%d, cap = %d, slice = %v\n", len(numbers1), cap(numbers1), numbers1)
+
 }
