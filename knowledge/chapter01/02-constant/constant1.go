@@ -16,5 +16,4 @@ func main() {
 	fmt.Println("Pi =", Pi)     // Pi = 3.141592653589793
 	fmt.Println("zero =", zero) // zero = 0
 	fmt.Println("size =", size) // size = 1024
-
 }
