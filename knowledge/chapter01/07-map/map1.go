@@ -26,9 +26,23 @@ func main() {
 	cityMap["Japan"] = "Tokyo"
 	cityMap["USA"] = "NewYork"
 
+	// 查找元素
+	value, ok := cityMap["China"]
+	if ok {
+		fmt.Println("找到了 value =>", value) // 找到了 value => Beijing
+	}
+
+	fmt.Println("===========================")
 	// 遍历
 	for key, value := range cityMap {
 		fmt.Println("key =", key, "value =", value)
+	}
+
+	fmt.Println("===========================")
+
+	// 只获取字典的键名
+	for key := range cityMap {
+		fmt.Println("key =", key)
 	}
 
 	// 删除 map 中的一个元素
