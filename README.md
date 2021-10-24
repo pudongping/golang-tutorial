@@ -23,6 +23,7 @@
 ### 函数式编程
 
 - [函数](./knowledge/chapter03/01-function)
+- [参数传递、变长参数与多返回值](./knowledge/chapter03/02-func-params-and-return-values)
   
 
 
