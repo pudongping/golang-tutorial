@@ -59,3 +59,19 @@ func main() {
 	printMap(cityMap)
 
 }
+
+/*
+找到了 value => Beijing
+===========================
+key = China value = Beijing
+key = Japan value = Tokyo
+key = USA value = NewYork
+===========================
+key = China
+key = Japan
+key = USA
+=============
+key = England value = London
+key = Japan value = Tokyo
+key = USA value = DC
+*/
