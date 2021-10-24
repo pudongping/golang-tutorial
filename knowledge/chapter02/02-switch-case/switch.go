@@ -20,7 +20,7 @@ func main() {
 	}
 
 	// 只有在与 case 分支值判等的时候，才可以将变量放到 switch 关键字后面
-	score1 := 70 // 这里
+	score1 := 70 // 这里会输出 Grade: C
 	switch score1 {
 	case 90, 100:
 		fmt.Println("Grade: A")
