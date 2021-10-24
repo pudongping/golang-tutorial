@@ -1,3 +1,3 @@
 # 跳转语句
 
-- [break 与 continue 语句](./break.go)
+- [break 与 continue 跳转语句](./break.go)
