@@ -25,8 +25,8 @@
 - [函数](./knowledge/chapter03/01-function)
 - [参数传递、变长参数与多返回值](./knowledge/chapter03/02-func-params-and-return-values)
 - [匿名函数与闭包](./knowledge/chapter03/03-anonymous-function-and-closure)
-- [通过高阶函数实现装饰器模式](./knowledge/chapter03/04-decorator-implement-by-high-order-function)
-  
+- [通过高阶函数实现装饰器模式](./knowledge/chapter03/04-decorator-implement-by-high-order-function) 
+- [递归函数及性能调优](./knowledge/chapter03/05-recursive-function-and-optimization)
 
 
 - [import 导包和 init 方法调用流程](./knowledge/chapter01/04-init)
