@@ -30,6 +30,11 @@
 - [Map-Reduce-Filter 模式处理集合元素](./knowledge/chapter03/06-func-map-reduce-filter-mode)
 - [基于管道技术实现函数的流式调用](./knowledge/chapter03/07-func-chaining-with-pipeline)
 
+### 面向对象
+
+- [类型系统概述](./knowledge/chapter04/01-type-system)
+
+
 - [import 导包和 init 方法调用流程](./knowledge/chapter01/04-init)
 - [指针](./knowledge/chapter01/05-pointer)
 - [defer](./knowledge/chapter01/06-defer)
