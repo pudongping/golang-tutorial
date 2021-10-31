@@ -34,6 +34,7 @@
 
 - [类型系统概述](./knowledge/chapter04/01-type-system)
 - [类的定义、初始化和成员方法](./knowledge/chapter04/02-struct-and-class)
+- [通过组合实现类的继承和方法重写](./knowledge/chapter04/03-oop-with-type-composite)
 
 
 - [import 导包和 init 方法调用流程](./knowledge/chapter01/04-init)
