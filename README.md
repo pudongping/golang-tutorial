@@ -33,6 +33,7 @@
 ### 面向对象
 
 - [类型系统概述](./knowledge/chapter04/01-type-system)
+- [类的定义、初始化和成员方法](./knowledge/chapter04/02-struct-and-class)
 
 
 - [import 导包和 init 方法调用流程](./knowledge/chapter01/04-init)
