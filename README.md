@@ -37,6 +37,7 @@
 - [通过组合实现类的继承和方法重写](./knowledge/chapter04/03-oop-with-type-composite)
 - [类属性和成员方法的可见性](./knowledge/chapter04/04-class-props-methods-visibility)
 - [接口定义及实现](./knowledge/chapter04/05-interface)
+- [接口赋值](./knowledge/chapter04/06-interface-assignment)
 
 - [import 导包和 init 方法调用流程](./knowledge/chapter01/04-init)
 - [指针](./knowledge/chapter01/05-pointer)
