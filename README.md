@@ -38,6 +38,7 @@
 - [类属性和成员方法的可见性](./knowledge/chapter04/04-class-props-methods-visibility)
 - [接口定义及实现](./knowledge/chapter04/05-interface)
 - [接口赋值](./knowledge/chapter04/06-interface-assignment)
+- [类型断言](./knowledge/chapter04/07-type-assertion)
 
 - [import 导包和 init 方法调用流程](./knowledge/chapter01/04-init)
 - [指针](./knowledge/chapter01/05-pointer)
