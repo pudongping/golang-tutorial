@@ -39,6 +39,8 @@
 - [接口定义及实现](./knowledge/chapter04/05-interface)
 - [接口赋值](./knowledge/chapter04/06-interface-assignment)
 - [类型断言](./knowledge/chapter04/07-type-assertion)
+- [空接口、反射和泛型](./knowledge/chapter04/08-empty-interface-reflection-and-generic)
+
 
 - [import 导包和 init 方法调用流程](./knowledge/chapter01/04-init)
 - [指针](./knowledge/chapter01/05-pointer)
