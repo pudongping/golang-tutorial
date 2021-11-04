@@ -41,6 +41,9 @@
 - [类型断言](./knowledge/chapter04/07-type-assertion)
 - [空接口、反射和泛型](./knowledge/chapter04/08-empty-interface-reflection-and-generic)
 
+### 错误处理
+
+- [error 类型](./knowledge/chapter05/01-error)
 
 - [import 导包和 init 方法调用流程](./knowledge/chapter01/04-init)
 - [指针](./knowledge/chapter01/05-pointer)
