@@ -1,3 +1,6 @@
+/*
+基于空接口和反射实现泛型
+*/
 package main
 
 import (
@@ -24,7 +27,7 @@ func NewContainer(t reflect.Type, size int) *Container {
 func (c *Container) Put(val interface{}) error {
 	// 通过反射对实际传递进来的元素类型进行运行时检查，
 	// 如果与容器初始化时设置的元素类型不同，则返回错误信息
-	// c.s.Type() 对应的是切片类型，c.s.Type().Elem() 应的才是切片元素类型
+	// c.s.Type() 对应的是切片类型，c.s.Type().Elem() 对应的才是切片元素类型
 	if reflect.ValueOf(val).Type() != c.s.Type().Elem() {
 		return fmt.Errorf("put error: cannot put a %T into a slice of %s",
 			val, c.s.Type().Elem())
