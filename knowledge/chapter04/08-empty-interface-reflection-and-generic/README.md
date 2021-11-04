@@ -6,3 +6,4 @@
 - [反射解析结构体标签 tag](./reflect_tag.go)
 - [结构体标签在 json 中的应用](./json.go)
 - [空接口的基本使用](./empty_interface.go)
+- [基于空接口和反射实现泛型 —— 自定义容器类型](./reflect2.go)
