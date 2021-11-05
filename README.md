@@ -44,10 +44,10 @@
 ### 错误处理
 
 - [error 类型](./knowledge/chapter05/01-error)
+- [defer](./knowledge/chapter05/02-defer)
 
 - [import 导包和 init 方法调用流程](./knowledge/chapter01/04-init)
 - [指针](./knowledge/chapter01/05-pointer)
-- [defer](./knowledge/chapter01/06-defer)
 - [数组、切片](./knowledge/chapter01/07-slice)
 - [map](./knowledge/chapter01/08-map)
 - [面向对象](./knowledge/chapter01/09-OOP)
