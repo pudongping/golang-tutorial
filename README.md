@@ -45,6 +45,7 @@
 
 - [error 类型](./knowledge/chapter05/01-error)
 - [defer](./knowledge/chapter05/02-defer)
+- [panic 和 recover](./knowledge/chapter05/03-panic-and-recover)
 
 - [import 导包和 init 方法调用流程](./knowledge/chapter01/04-init)
 - [指针](./knowledge/chapter01/05-pointer)
