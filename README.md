@@ -34,7 +34,7 @@
 
 - [类型系统概述](./knowledge/chapter04/01-type-system)
 - [类的定义、初始化和成员方法](./knowledge/chapter04/02-struct-and-class)
-- [通过组合实现类的继承和方法重写](./knowledge/chapter04/03-oop-with-type-composite)
+- [通过组合实现类的封装、继承、多态和方法重写](./knowledge/chapter04/03-oop-with-type-composite)
 - [类属性和成员方法的可见性](./knowledge/chapter04/04-class-props-methods-visibility)
 - [接口定义及实现](./knowledge/chapter04/05-interface)
 - [接口赋值](./knowledge/chapter04/06-interface-assignment)
@@ -49,7 +49,5 @@
 - [panic 和 recover](./knowledge/chapter05/03-panic-and-recover)
 
 
-- [面向对象](./knowledge/chapter01/09-OOP)
-- [反射](./knowledge/chapter01/10-reflect)
 - [goroutine](./knowledge/chapter01/11-goroutine)
 - [channel](./knowledge/chapter01/12-channel)
