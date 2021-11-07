@@ -49,9 +49,6 @@
 - [panic 和 recover](./knowledge/chapter05/03-panic-and-recover)
 
 
-- [指针](./knowledge/chapter01/05-pointer)
-- [数组、切片](./knowledge/chapter01/07-slice)
-- [map](./knowledge/chapter01/08-map)
 - [面向对象](./knowledge/chapter01/09-OOP)
 - [反射](./knowledge/chapter01/10-reflect)
 - [goroutine](./knowledge/chapter01/11-goroutine)
