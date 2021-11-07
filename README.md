@@ -48,6 +48,7 @@
 - [defer](./knowledge/chapter05/02-defer)
 - [panic 和 recover](./knowledge/chapter05/03-panic-and-recover)
 
+### 6. 并发
 
-- [goroutine](./knowledge/chapter01/11-goroutine)
-- [channel](./knowledge/chapter01/12-channel)
+- [goroutine](./knowledge/chapter06/01-goroutine)
+- [channel](./knowledge/chapter06/02-channel)
