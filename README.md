@@ -52,3 +52,8 @@
 
 - [goroutine](./knowledge/chapter06/01-goroutine)
 - [channel](./knowledge/chapter06/02-channel)
+
+
+## 项目
+
+- [简单的计算器](./project/calc)
