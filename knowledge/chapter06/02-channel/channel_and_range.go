@@ -32,6 +32,7 @@ func main() {
 
 	// 以下这种写法和以上的写法其实是一致的
 	// 可以使用 range 来迭代不断操作 channel
+	// 必须要调用 close() 方法将管道关闭，才能够使用 range 一次性把管道中所有的数据拿出来
 	for data := range c {
 		fmt.Println(data)
 	}
