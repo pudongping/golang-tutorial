@@ -5,6 +5,9 @@
 - [channel 关闭的特点](./channel2.go)
 - [channel 和 range](./channel_and_range.go)
 - [channel 和 select](./channel_and_select.go)
+- [往 goroutine 中写数据和取数据](./channel3.go)
+- [定义一个只读只写的 channel](./channel4.go)
+- [从只读和只写的 channel 中读写数据](./channel5.go)
 
 单流程下一个 go 只能监控一个 channel 的状态，select 可以完成监控多个 channel 的状态
 
