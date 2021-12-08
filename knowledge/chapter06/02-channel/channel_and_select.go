@@ -9,6 +9,7 @@ import "fmt"
 func fibonacii(c, quit chan int) {
 	x, y := 1, 1
 
+	// 如果不写 for 死循环的话，那么当下面的 case 只会执行一次后就退出了进程
 	for {
 		select {
 		case c <- x:
