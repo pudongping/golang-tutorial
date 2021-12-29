@@ -73,6 +73,8 @@ func main() {
 		trie.Insert(word)
 	}
 
+	fmt.Printf("树形结构 %#v\n", trie)
+
 	// 从 Trie 树中查找字符串
 	term := "坏蛋"
 	if trie.Find(term) {
