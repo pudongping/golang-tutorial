@@ -15,3 +15,4 @@ Go 语言将会以原容量的 1.25 倍作为新容量的基准。
 - [切片的截取和内容复制](./slice3.go)
 - [切片删除](./slice4.go) 可以参考 [这个图片示例](https://ueokande.github.io/go-slice-tricks/) 来直观的感受切片元素的动态操作
 - [数据共享问题](./slice5.go)
+- [将切片按照指定步长做切割](./slice6.go)
