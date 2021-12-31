@@ -39,6 +39,6 @@ func main() {
 		"third":  "golang",
 	}
 	// map[first:php second:python third:golang]
-	fmt.Println(myMap3)
+	fmt.Println(myMap3["first"])
 
 }
