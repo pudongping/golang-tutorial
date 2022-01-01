@@ -60,7 +60,7 @@ func main() {
 		}
 
 		// 获取待计算平方根的数值，并将类型转化为整型
-		//v3, err := strconv.Atoi(args[2])
+		v3, err := strconv.Atoi(args[2])
 		// 获取参数出错，则退出
 		if err != nil {
 			fmt.Println("USAGE: calc sqrt <integer>")
