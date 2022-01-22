@@ -2,19 +2,15 @@ package main
 
 import (
 	"fmt"
-	"strings"
+	"time"
 )
 
 func main()  {
 
-	keywords := []string{"坏蛋", "坏人", "发票", "傻子", "傻大个", "傻人"}
-	content := "不要发票，你就是一个傻子，只会发呆"
-
-	for _, keyword := range keywords {
-		fmt.Println(keyword)
-		content = strings.ReplaceAll(content, keyword, "**")
-	}
-
-	fmt.Println(content)
-
+	a := time.Now()
+	fmt.Println(a.Unix())
+	time.Sleep(5 * time.Second)
+	fmt.Println(time.Now().Unix())
+	b := time.Since(a)
+	fmt.Println(b)
 }
