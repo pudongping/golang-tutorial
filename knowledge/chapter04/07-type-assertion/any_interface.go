@@ -14,6 +14,7 @@ func myFunc(arg interface{})  {
 	// 给 interface{} 提供 "类型断言" 的机制
 	value, ok := arg.(string)  // 判断 arg 参数是否为 string 类型
 	if !ok {
+		// 断言失败，此时会将 value 设置为类型的零值，这里 value 断言 string 类型，因此断言失败时， value 就会空字符串
 		fmt.Println("arg is not string type")
 	} else {
 		fmt.Println("arg is string type, value =", value)
