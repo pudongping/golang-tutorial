@@ -88,4 +88,15 @@ func main() {
 	fmt.Printf("v29 = %s, type of v29 = %T\n", v29, v29) // v29 = "Hello, 世界", type of v29 = string
 	fmt.Printf("v30 = %s, type of v30 = %T\n", v30, v30) // v30 = "Hello, \u4e16\u754c", type of v30 = string
 
+	v31 := 100
+	v32 := int32(v31)                                    // int 转 int32
+	v33 := int64(v31)                                    // int 转 int64
+	fmt.Printf("v31 = %v, type of v31 = %T\n", v31, v31) // v31 = 100, type of v31 = int
+	fmt.Printf("v32 = %v, type of v32 = %T\n", v32, v32) // v32 = 100, type of v32 = int32
+	fmt.Printf("v33 = %v, type of v33 = %T\n", v33, v33) // v33 = 100, type of v33 = int64
+	v34 := int(v32)                                      // int32 转 int
+	v35 := int(v33)                                      // int64 转 int
+	fmt.Printf("v34 = %v, type of v34 = %T\n", v34, v34) // v34 = 100, type of v34 = int
+	fmt.Printf("v35 = %v, type of v35 = %T\n", v35, v35) // v35 = 100, type of v35 = int
+
 }
