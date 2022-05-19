@@ -8,6 +8,7 @@
 - [从只读和只写的 channel 中读写数据](./channel5.go)
 - [channel 和 range](./channel_and_range.go)
 - [channel 和 select](./channel_and_select.go)
+- [select 超时处理](./select_timeout.go)
 
 channel 的基本定义
 
@@ -30,7 +31,7 @@ channel <- value // 发送 value 到 管道变量 channel 中
 // 第二种
 x := <-channel  // 从 channel 中接收数据，并赋值给 x
 // 第三种
-x, ok := <-channel  // 功能同上，同时检查通道是否已关闭或者是否为空（ok，表示是否读成功）
+x, ok := <-channel  // 功能同上，同时检查通道是否已关闭或者是否为空（ok，表示是否读成功，当 ok 为 true 时，表示通道没有被关闭）
 
 
 ```
@@ -49,3 +50,11 @@ default:
 }
 
 ```
+
+select 相关：
+
+1. select 只能用于 channel 的操作（写入/读取）
+2. select 的 case 是随机的
+3. select 要注意避免出现死锁，同时也可以自行实现超时机制
+4. select 里面没有类似 switch 里的 fallthrough 的用法
+5. select 不能像 switch 一样接函数或其他表达式
