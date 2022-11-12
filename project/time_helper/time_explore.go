@@ -200,13 +200,22 @@ func calcTime() {
 }
 
 func judgeTime() {
+	now := time.Now()
+	s := now.Format("2006-01-02 15:04:05")
+	// 当前时间为 2022-11-12 19:45:36
+	fmt.Printf("当前时间为 %s \n", s)
+
 	// 时间比较
+	// 尽可能的使用 time.ParseInLocation() 方法，因为可以手动指定时区
+	// 而少用 time.Parse() 方法，因为默认的时区为 UTC（零时区）
 	startTime, _ := time.Parse("2006-01-02 15:04:05", "2022-10-24 18:18:00")
-	isBefore := startTime.Before(time.Now())
-	isAfter := startTime.After(time.Now())
-	isEqual := startTime.Equal(time.Now())
-	// 2022-10-24 18:18:00 是否在当前时间之前？ false 是否在当前时间之后？ true 还是相等？ false
-	fmt.Printf("2022-10-24 18:18:00 是否在当前时间之前？ %v 是否在当前时间之后？ %v 还是相等？ %v\n", isBefore, isAfter, isEqual)
+	isBefore := startTime.Before(now)
+	isAfter := startTime.After(now)
+	isEqual := startTime.Equal(now)
+	// 2022-10-24 18:18:00 是否在 2022-11-12 19:45:36 之前？ true
+	// 是否在 2022-11-12 19:45:36 之后？ false
+	// 还是相等？ false
+	fmt.Printf("2022-10-24 18:18:00 是否在 %s 之前？ %v \n 是否在 %s 之后？ %v \n还是相等？ %v\n", s, isBefore, s, isAfter, isEqual)
 
 	sTime := time.Now()
 	time.Sleep(time.Second * 3)
