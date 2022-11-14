@@ -283,9 +283,6 @@ func main() {
 	// 返回指定字段
 	// testFetchSource()
 
-	// 查询总命中计数
-	// testTrackTotalHits()
-
 	// 通过文档 id 批量删除
 	// testDeleteBulkDoc()
 
@@ -757,29 +754,15 @@ func testFetchSource() {
 	// {AppName:3 GoodsId:h3_goods_id SiteId:0 CheckStatus:0 CreatedAt:0 UpdatedAt:0}
 }
 
-func testTrackTotalHits() {
+func testTotal() {
 	// 查询总命中计数
-	hitCounterRet, err := ESClient.Search().Index(RcpGoodsImgChecksESIndex).TrackTotalHits(true).Do(context.Background())
+	total, err := ESClient.Count().Index(RcpGoodsImgChecksESIndex).Do(context.Background())
 	if err != nil {
 		panic(err)
 	}
-	for _, v := range hitCounterRet.Hits.Hits {
-		var tmp RcpGoodsImgChecksES
-		json.Unmarshal(v.Source, &tmp)
-		fmt.Printf("查询总命中计数，已经命中查询的数据为 ==> %+v \n %+v \n\n", v.Id, tmp)
-	}
 
-	// 查询总命中计数，已经命中查询的数据为 ==> 2_19_alex111
-	// {AppName:2 GoodsId:alex111 SiteId:18 CheckStatus:23 CreatedAt:1660579517 UpdatedAt:1660579517}
-	//
-	// 查询总命中计数，已经命中查询的数据为 ==> h2
-	// {AppName:1 GoodsId:h2_goods_id SiteId:19 CheckStatus:4 CreatedAt:1660579860 UpdatedAt:1660579860}
-	//
-	// 查询总命中计数，已经命中查询的数据为 ==> h1
-	// {AppName:2 GoodsId:h1_goods_id SiteId:17 CheckStatus:2 CreatedAt:1660579860 UpdatedAt:1660579923}
-	//
-	// 查询总命中计数，已经命中查询的数据为 ==> h3
-	// {AppName:3 GoodsId:h3_goods_id SiteId:20 CheckStatus:2 CreatedAt:1660579860 UpdatedAt:1660579923}
+	// 查询总命中计数，已经命中查询的数据为 ==> 2
+	fmt.Printf("查询总命中计数，已经命中查询的数据为 ==> %+v \n", total)
 }
 
 func testDeleteBulkDoc() {
