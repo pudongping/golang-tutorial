@@ -63,3 +63,4 @@
 - [简单封装原生 http 客户端请求](./project/http_client)
 - [高效快速读取超大日志文件](./project/read_big_file)
 - [如何在 Go 项目中可靠的获取项目根目录](./project/get_root_path)
+- [基于 redis 实现异步队列以及异步延迟队列](./project/redis_demo)
