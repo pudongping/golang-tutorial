@@ -9,6 +9,7 @@
 - [channel 和 range](./channel_and_range.go)
 - [channel 和 select](./channel_and_select.go)
 - [select 超时处理](./select_timeout.go)
+- [多个 goroutine 抓取数据，并将结果数据以及错误信息保存](./channel_with_err.go)
 
 channel 的基本定义
 
