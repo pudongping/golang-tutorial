@@ -139,7 +139,7 @@ func mapSyncMapDemo() {
 }
 
 func main() {
-	// mapSyncMutex()
+	mapSyncMutex()
 	// mapRWMutex()
 	// mapSyncMap()
 	mapSyncMapDemo()
