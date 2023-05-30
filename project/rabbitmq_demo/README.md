@@ -1,5 +1,7 @@
 # RabbitMQ
 
+- [官网使用示例](https://www.rabbitmq.com/getstarted.html)
+
 ## 安装
 
 使用 docker 安装

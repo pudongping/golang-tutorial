@@ -8,9 +8,19 @@ import (
 	amqp "github.com/rabbitmq/amqp091-go"
 )
 
+// 所需参数
+const (
+	host     = "localhost" // 服务接入地址
+	username = "guest"     // 角色控制台对应的角色名称
+	password = "guest"     // 角色对应的密钥
+	vhost    = ""          // 要使用的Vhost全称
+)
+
+const url = "amqp://" + username + ":" + password + "@" + host + ":5672/" + vhost
+
 func ProducerMessage() {
 	// 创建 RabbitMQ 连接
-	conn, err := amqp.Dial("amqp://guest:guest@localhost:5672/")
+	conn, err := amqp.Dial(url)
 	if err != nil {
 		log.Fatal("无法连接到 RabbitMQ:", err)
 	}
@@ -74,17 +84,6 @@ func ConsumerMessage() {
 
 	// 声明队列
 	queueName := "my_queue"
-	_, err = ch.QueueDeclare(
-		queueName, // 队列名称
-		false,     // 持久化
-		false,     // 自动删除
-		false,     // 排他性
-		false,     // 等待服务器确认
-		nil,       // 参数
-	)
-	if err != nil {
-		log.Fatal("无法声明队列:", err)
-	}
 
 	// 接收消息
 	msgs, err := ch.Consume(
@@ -100,7 +99,16 @@ func ConsumerMessage() {
 		log.Fatal("无法接收消息:", err)
 	}
 
-	for msg := range msgs {
-		log.Println("收到消息:", string(msg.Body))
-	}
+	// 获取消息队列中的消息
+	forever := make(chan struct{})
+	go func() {
+		for msg := range msgs {
+			log.Println("收到消息:", string(msg.Body))
+			// 手动回复 ack
+			msg.Ack(false)
+		}
+	}()
+	log.Printf(" [Consumer] Waiting for messages.")
+	<-forever
+
 }
