@@ -135,3 +135,26 @@ go tool pprof profile
 ## 第三种方式：通过 Lookup 写入文件做剖析。（runtime/pprof：采集程序（非 Server）的指定区块的运行数据进行分析。）
 
 [详见](./analyze_by_file_loopup)
+
+
+## 排查示例
+
+相隔一段时间后，拉取相应的分析数据
+
+```bash
+
+go tool pprof -alloc_objects http://localhost:6060/debug/pprof/heap
+
+# 可能在 5min 后再次执行
+go tool pprof -alloc_objects http://localhost:6060/debug/pprof/heap
+
+# 通过 -base 指令实现对比
+# 该命令会以 001.pb.gz 文件作为基准，然后对 002.pb.gz 与 001.pb.gz 进行对比，因此接下来的指令分析，都是基于 002.pb.gz 和 001.pb.gz 的对比结果尽心的
+go tool pprof -base ./pprof.alloc_objects.alloc_space.inuse_objects.inuse_space.001.pb.gz ./pprof.alloc_objects.alloc_space.inuse_objects.inuse_space.002.pb.gz
+
+# 第一步，使用 top 命令查看
+# 第二步，使用 traces 命令查看更精细的调用栈信息
+# 第三步，使用 list 命令查看在执行 traces 命令后，所输出的调用堆栈信息中的具体调用函数是在哪里发起的。eg：`list xxxxxFunc`
+# list 命令在函数名不明确的情况下，是会进行默认模糊匹配的。
+
+```
