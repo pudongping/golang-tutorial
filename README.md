@@ -1,6 +1,6 @@
 # golang 学习笔记
 
-## 目录
+## 基础
 
 ### 1. 数据类型
 
@@ -53,6 +53,10 @@
 - [goroutine](./knowledge/chapter06/01-goroutine)
 - [channel](./knowledge/chapter06/02-channel)
 
+## 进阶
+
+- [Go 大杀器之性能剖析 PProf](./advanced/PProf_example)
+- [Go 大杀器之跟踪剖析 trace](./advanced/trace_example)
 
 ## 项目或者示例
 
