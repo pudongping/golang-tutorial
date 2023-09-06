@@ -58,6 +58,7 @@
 - [Go 大杀器之性能剖析 PProf](./advanced/PProf_example)
 - [Go 大杀器之跟踪剖析 trace](./advanced/trace_example)
 - [用 GODEBUG 看调度跟踪 GPM](./advanced/GODEBUG_GPM_example)
+- [用 GODEBUG 看 GC](./advanced/GODEBUG_GC_example)
 
 ## 项目或者示例
 
