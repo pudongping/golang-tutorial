@@ -1,14 +1,14 @@
-# 用 GODEBUG 看调度跟踪 GMP
+# 用 GODEBUG 看调度跟踪 GPM
 
 ## Go Scheduler 调度的基础知识
 
-GMP 模型。可详细阅读 [Go Runtime Scheduler](https://speakerdeck.com/retervision/go-runtime-scheduler)
+GPM 模型。详细可查看 [Go Runtime Scheduler](https://speakerdeck.com/retervision/go-runtime-scheduler)
 
 - G：Goroutine，实际上我们每次调用 go func 就是生成了一个 G。
 - P：Processor，处理器，一般 P 的数量就是处理器的核数，可以通过 `GOMAXPROCS` 进行修改。
 - M：Machine，系统线程。
 
-![](imgs/gmp-scheduler.png)
+![](imgs/gpm-scheduler.png)
 
 1. 当我们执行 `go func()` 时，实际上就是创建一个全新的 Goroutine，我们称它为 G。
 2. 新创建的 G 会被放入 P 的本地队列（Local Queue）或全局队列（Global Queue）中，准备下一步的动作。需要注意的一点，这里的 P 指的是创建 G 的 P。
