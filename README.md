@@ -60,6 +60,7 @@
 - [用 GODEBUG 看调度跟踪 GPM](./advanced/GODEBUG_GPM_example)
 - [用 GODEBUG 看 GC](./advanced/GODEBUG_GC_example)
 - [Go 进程诊断工具 gops](./advanced/gops_example)
+- [公开和发布度量指标](./advanced/public_publish_Metrics)
 
 ## 项目或者示例
 
