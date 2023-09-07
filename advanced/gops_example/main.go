@@ -17,5 +17,6 @@ func main() {
 	http.HandleFunc("/hello", func(w http.ResponseWriter, r *http.Request) {
 		_, _ = w.Write([]byte(`hello world `))
 	})
+
 	http.ListenAndServe(":6060", http.DefaultServeMux)
 }
