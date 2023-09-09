@@ -61,6 +61,7 @@
 - [用 GODEBUG 看 GC](./advanced/GODEBUG_GC_example)
 - [Go 进程诊断工具 gops](./advanced/gops_example)
 - [公开和发布度量指标](./advanced/public_publish_Metrics)
+- [逃逸分析 - 变量在哪儿](./advanced/escape_analysis)
 
 ## 项目或者示例
 
