@@ -76,3 +76,4 @@
 - [基于 imap 协议解析邮件内容](./project/mail_parse)
 - [文件分片（可用于分片上传的前身）](./project/file_handler)
 - [使用第三方包 rabbitmq/amqp091-go 操作 rabbitmq](./project/rabbitmq_demo)
+- [如何找到 Redis 的 Big key](./project/redis_big_key)
