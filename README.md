@@ -77,3 +77,15 @@
 - [文件分片（可用于分片上传的前身）](./project/file_handler)
 - [使用第三方包 rabbitmq/amqp091-go 操作 rabbitmq](./project/rabbitmq_demo)
 - [如何找到 Redis 的 Big key](./project/redis_big_key)
+
+## Project supported by JetBrains
+
+Many thanks to Jetbrains for kindly providing a license for me to work on this and other open-source projects.
+
+<a href="https://jb.gg/OpenSourceSupport" target="_blank">
+<img width="150px" src="https://s2.loli.net/2022/10/10/xlWUgcwi32J4oBT.png" alt="jb_beam">
+</a>
+
+## LICENSE
+
+MIT
