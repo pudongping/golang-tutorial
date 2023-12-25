@@ -3,6 +3,7 @@ module go-tutorial
 go 1.16
 
 require (
+	github.com/PuerkitoBio/goquery v1.8.1 // indirect
 	github.com/davecgh/go-spew v1.1.1
 	github.com/emersion/go-imap v1.2.1
 	github.com/emersion/go-message v0.16.0
@@ -13,5 +14,5 @@ require (
 	github.com/onsi/gomega v1.18.1 // indirect
 	github.com/prometheus/client_golang v1.12.2
 	github.com/rabbitmq/amqp091-go v1.8.1
-	golang.org/x/net v0.0.0-20220127200216-cd36cc0744dd
+	golang.org/x/net v0.7.0
 )
