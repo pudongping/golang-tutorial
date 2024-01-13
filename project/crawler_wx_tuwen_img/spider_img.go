@@ -132,7 +132,7 @@ func Run() {
 	wxTuWenIMGUrls := getWXTuWenUrls(tuWenFilePath)
 	wg := sync.WaitGroup{}
 	httpClient := &http.Client{
-		Timeout: time.Minute * 5,
+		Timeout: time.Minute * 15,
 	}
 
 	for i, wxTuWenIMGUrl := range wxTuWenIMGUrls {
