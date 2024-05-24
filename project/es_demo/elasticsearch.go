@@ -1,4 +1,4 @@
-/**
+/*
 GitHub： https://github.com/olivere/elastic
 官方文档示例： https://olivere.github.io/elastic/
 下载：go get github.com/olivere/elastic/v7
