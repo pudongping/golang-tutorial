@@ -63,7 +63,7 @@
 - [公开和发布度量指标](./advanced/public_publish_Metrics)
 - [逃逸分析 - 变量在哪儿](./advanced/escape_analysis)
 
-## 学以致用小项目
+## 学以致用小项目和小示例
 
 - [简单的计算器](./project/calc)
 - [精简的即时通讯示例](./project/IM-System)
@@ -78,6 +78,7 @@
 - [使用第三方包 rabbitmq/amqp091-go 操作 rabbitmq](./project/rabbitmq_demo)
 - [如何找到 Redis 的 Big key](./project/redis_big_key)
 - [抓取微信“图片/文字”类型中的图片](./project/crawler_wx_tuwen_img)
+- [学习 sqlx 示例](./project/sqlx_demo)
 
 ## Project supported by JetBrains
 
