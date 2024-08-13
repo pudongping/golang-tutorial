@@ -1,6 +1,7 @@
 package redis_demo
 
 import (
+	"fmt"
 	"time"
 
 	"github.com/go-redis/redis"
@@ -11,7 +12,14 @@ func NewRedisClient() *redis.Client {
 		Addr:     "localhost:6379",
 		Password: "",
 		DB:       0,
+		PoolSize: 25, // 连接池大小
 	})
+
+	// 测试连接
+	_, err := client.Ping().Result()
+	if err != nil {
+		panic(fmt.Sprintf("连接Redis失败，错误原因：%v", err))
+	}
 
 	return client
 }
