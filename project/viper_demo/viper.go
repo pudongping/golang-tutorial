@@ -17,11 +17,11 @@ import (
 // 默认值
 
 func GetConfig4YamlFile() {
-	// viper.SetConfigFile("./config_demo.yaml") // 指定配置文件路径
+	viper.SetConfigFile("./config_demo.yaml") // 指定配置文件路径
 	// 和同时设置配置文件名和配置文件扩展名一样
-	viper.SetConfigName("config_demo") // 指定配置文件名（不带扩展名）
-	viper.SetConfigType("yaml")        // 指定配置文件类型
-	viper.AddConfigPath(".")           // 指定查找配置文件的路径
+	// viper.SetConfigName("config_demo") // 指定配置文件名（不带扩展名）
+	// viper.SetConfigType("yaml")        // 指定配置文件类型
+	// viper.AddConfigPath(".")           // 指定查找配置文件的路径
 
 	// 读取配置文件
 	err := viper.ReadInConfig()
@@ -35,6 +35,10 @@ func GetConfig4YamlFile() {
 			return
 		}
 	}
+
+	// 查看某个配置是否存在
+	fmt.Printf("一定存在 mysql.host: %v\n", viper.IsSet("mysql.host"))
+	fmt.Printf("一定不存在 mysql.host1: %v\n", viper.IsSet("mysql.host1"))
 
 	// 建立默认值
 	viper.SetDefault("port", 8081)
