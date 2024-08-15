@@ -71,14 +71,17 @@
 - [使用第三方包 olivere/elastic 操作 elasticsearch](./project/es_demo)
 - [简单封装原生 http 客户端请求](./project/http_client)
 - [高效快速读取超大日志文件](./project/read_big_file)
-- [如何在 Go 项目中可靠的获取项目根目录](./project/get_root_path)
+- [在 Go 项目中获取可靠的项目根目录](./project/get_root_path)
 - [基于 redis 实现异步队列以及异步延迟队列](./project/redis_demo)
 - [基于 imap 协议解析邮件内容](./project/mail_parse)
 - [文件分片（可用于分片上传的前身）](./project/file_handler)
-- [使用第三方包 rabbitmq/amqp091-go 操作 rabbitmq](./project/rabbitmq_demo)
-- [如何找到 Redis 的 Big key](./project/redis_big_key)
+- [第三方包 rabbitmq/amqp091-go 操作 rabbitmq](./project/rabbitmq_demo)
+- [找出 Redis 中的 Big key](./project/redis_big_key)
 - [抓取微信“图片/文字”类型中的图片](./project/crawler_wx_tuwen_img)
 - [学习 sqlx 示例](./project/sqlx_demo)
+- [使用 go-redis 来操作 redis](./project/redis_demo)
+- [使用 viper 来读取配置文件](./project/viper_demo)
+- [标准库 log 以及 zap 日志库使用](./project/log_demo)
 
 ## Project supported by JetBrains
 
