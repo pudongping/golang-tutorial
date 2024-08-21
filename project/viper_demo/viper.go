@@ -8,20 +8,26 @@ import (
 	_ "github.com/spf13/viper/remote"
 )
 
-// Viper 会按照下面的优先级。每个项目的优先级都高于它下面的项目:
-// 显示调用 Set 设置值
-// 命令行参数（flag）
-// 环境变量
-// 配置文件
-// key/value 存储
-// 默认值
+// Viper 会按照下面的优先级：
+// 1. 显式调用 Set 方法设置的值
+// 2. 命令行参数（flag）
+// 3. 环境变量
+// 4. 配置文件
+// 5. key/value 存储（如 etcd、consul）
+// 6. 默认值
 
 func GetConfig4YamlFile() {
 	viper.SetConfigFile("./config_demo.yaml") // 指定配置文件路径
-	// 和同时设置配置文件名和配置文件扩展名一样
-	// viper.SetConfigName("config_demo") // 指定配置文件名（不带扩展名）
-	// viper.SetConfigType("yaml")        // 指定配置文件类型
-	// viper.AddConfigPath(".")           // 指定查找配置文件的路径
+
+	// 指定配置文件名（不带扩展名），它只会去找文件名为 config_demo 的文件，
+	// 比如如果有 config_demo.yaml 和 config_demo.json 两个文件时，其实这两个文件都有可能会读到
+	// 因此，强烈建议不要在同目录下放置多个同名不同后缀的文件，如果存在时，则直接使用 viper.SetConfigFile() 方法
+	// viper.SetConfigName("config_demo")
+
+	// 需要注意的是：这个配置基本上是配合远程配置中心使用的，比如 etcd、consul、zookeeper 等，告诉 viper 当前的数据使用什么格式去解析
+	// viper.SetConfigType("yaml")        // 指定配置文件类型（专用于从远程获取配置信息时指定配置）
+
+	// viper.AddConfigPath(".")           // 指定查找配置文件的路径（这里使用相对路径）
 
 	// 读取配置文件
 	err := viper.ReadInConfig()
@@ -40,7 +46,7 @@ func GetConfig4YamlFile() {
 	fmt.Printf("一定存在 mysql.host: %v\n", viper.IsSet("mysql.host"))
 	fmt.Printf("一定不存在 mysql.host1: %v\n", viper.IsSet("mysql.host1"))
 
-	// 建立默认值
+	// 设置默认值
 	viper.SetDefault("port", 8081)
 
 	// 读取所有的配置信息
