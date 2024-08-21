@@ -82,6 +82,7 @@
 - [使用 go-redis 来操作 redis](./project/redis_demo)
 - [使用 viper 来读取配置文件](./project/viper_demo)
 - [标准库 log 以及 zap 日志库使用](./project/log_demo)
+- [优雅关机和平滑重启](./project/shutdown_demo)
 
 ## Project supported by JetBrains
 
