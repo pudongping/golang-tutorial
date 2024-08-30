@@ -45,7 +45,20 @@ func InitCustomLogger() {
 	writeSyncer := getLogWriter1()
 	// 编码器，如何写入日志
 	encoder := getEncoder()
-	core := zapcore.NewCore(encoder, writeSyncer, zapcore.DebugLevel)
+
+	var core zapcore.Core
+	mode := "prod" // dev or prod
+	if mode == "dev" {
+		// 开发模式下，日志输出到控制台，同时也输出到文件
+		consoleEncoder := zapcore.NewConsoleEncoder(zap.NewDevelopmentEncoderConfig())
+		core = zapcore.NewTee(
+			zapcore.NewCore(encoder, writeSyncer, zapcore.DebugLevel),
+			zapcore.NewCore(consoleEncoder, zapcore.Lock(os.Stdout), zapcore.DebugLevel),
+		)
+	} else {
+		// 生产模式，日志输出到文件
+		core = zapcore.NewCore(encoder, writeSyncer, zapcore.DebugLevel)
+	}
 
 	// zap.AddCaller() 会在日志中加入调用函数的文件名和行号
 	// zap.AddCallerSkip(1) 会跳过调用函数的文件名和行号
