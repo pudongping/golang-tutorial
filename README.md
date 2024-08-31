@@ -63,6 +63,11 @@
 - [公开和发布度量指标](./advanced/public_publish_Metrics)
 - [逃逸分析 - 变量在哪儿](./advanced/escape_analysis)
 
+## 技巧
+
+- [内存对齐：尽量减少内存占用](./skill/memory_alignment)
+- [json 操作技巧：将数字类型传递给前端造成数字失真问题、忽略嵌套结构体空值字段](./skill/json_demo)
+
 ## 学以致用小项目和小示例
 
 - [简单的计算器](./project/calc)
@@ -84,6 +89,9 @@
 - [标准库 log 以及 zap 日志库使用](./project/log_demo)
 - [优雅关机和平滑重启](./project/shutdown_demo)
 - [分布式唯一ID——雪花算法](./project/snow_flake)
+- [使用 go-playground/validator 来做参数校验](./project/validator_demo)
+- [使用 golang-jwt/jwt 做鉴权](./project/jwt_demo)
+- [接口速率限制：漏桶算法、令牌桶算法](./project/ratelimit_demo)
 
 ## Project supported by JetBrains
 
