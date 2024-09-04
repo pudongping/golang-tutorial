@@ -15,3 +15,15 @@ func TestOmitEmpty2Demo(t *testing.T) {
 func TestDigitalDistortionDemo(t *testing.T) {
 	DigitalDistortionDemo()
 }
+
+func TestJsonEnDeDemo(t *testing.T) {
+	JsonEnDeDemo()
+}
+
+func TestGobEnDeDemo(t *testing.T) {
+	GobEnDeDemo()
+}
+
+func TestMsgpackEnDeDemo(t *testing.T) {
+	MsgpackEnDeDemo()
+}

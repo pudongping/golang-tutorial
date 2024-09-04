@@ -28,6 +28,7 @@ require (
 	github.com/rabbitmq/amqp091-go v1.8.1
 	github.com/sony/sonyflake v1.2.0
 	github.com/spf13/viper v1.19.0
+	github.com/vmihailenco/msgpack/v5 v5.4.1
 	go.uber.org/ratelimit v0.3.1
 	go.uber.org/zap v1.27.0
 	golang.org/x/net v0.25.0
