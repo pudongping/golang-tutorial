@@ -2,12 +2,12 @@
 
 - [channel 的基本定义和使用](./channel.go)
 - [channel 有缓冲与无缓冲同步问题](./channel1.go)
-- [channel 关闭的特点](./channel2.go)
+- [channel close 关闭的特点](./channel2.go)
 - [往 goroutine 中写数据和取数据](./channel3.go)
-- [定义一个只读只写的 channel](./channel4.go)
+- [定义一个只读、只写的 channel](./channel4.go)
 - [从只读和只写的 channel 中读写数据](./channel5.go)
 - [channel 和 range](./channel_and_range.go)
-- [channel 和 select](./channel_and_select.go)
+- [channel 和 select 的多路复用](./channel_and_select.go)
 - [select 超时处理](./select_timeout.go)
 - [多个 goroutine 抓取数据，并将结果数据以及错误信息保存](./channel_with_err.go)
 
@@ -54,8 +54,16 @@ default:
 
 select 相关：
 
-1. select 只能用于 channel 的操作（写入/读取）
-2. select 的 case 是随机的
+1. select 只能用于 channel 的操作（写入/读取），可处理一个或多个 channel 的发送/接收操作
+2. select 的 case 是随机的（如果多个 case 同时满足，select 会随机选择一个执行）
 3. select 要注意避免出现死锁，同时也可以自行实现超时机制
 4. select 里面没有类似 switch 里的 fallthrough 的用法
 5. select 不能像 switch 一样接函数或其他表达式
+
+
+channel 通道相关：
+
+1. 对一个关闭的通道再发送值就会导致 panic
+2. 对一个关闭的通道进行接收会一直获取值直到通道为空
+3. 对一个关闭的并且没有值的通道执行接收操作会得到对应类型的零值
+4. 关闭一个已经关闭的通道会导致 panic

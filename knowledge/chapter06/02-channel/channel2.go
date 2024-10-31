@@ -4,6 +4,7 @@ channel 关闭的特点
 2. 关闭 channel 后，无法向 channel 再发送数据 （引发 panic 错误后导致接收立即返回零值）
 3. 关闭 channel 后，可以继续从 channel 接收数据
 4. 对于 nil channel，无论收发都会被阻塞
+5. 对于已经关闭的 channel，再次关闭会引发 panic 错误
 */
 package main
 
@@ -18,7 +19,9 @@ func main() {
 			c <- i
 		}
 
+		// 当我们向通道中发送完数据后，我们可以通过 close 来关闭通道 channel
 		// close 可以关闭一个 channel
+		// 通道的关闭操作应该由发送方来完成，接收方不应该关闭通道
 		close(c)
 	}()
 
