@@ -16,7 +16,15 @@ docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.11-ma
 # 长久使用
 docker run -it --name alex-rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.11-management
 
-# 访问 web 管理界面
+# 浏览器访问访问 web 管理界面
 # 默认的账号和密码都为 guest
-curl http://127.0.0.1:15672
+http://127.0.0.1:15672
 ```
+
+## 使用 Go RabbitMQ 客户端
+
+这里我们已经没有使用 `github.com/streadway/amqp` 库了，因为这个库现在已经没有维护了。这个库也推荐直接使用 `https://github.com/rabbitmq/amqp091-go` 库。
+
+## 代码示例
+
+- [一个最简单的生产者和消费者](./amqp.go)
