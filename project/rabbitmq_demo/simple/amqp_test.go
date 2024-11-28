@@ -1,4 +1,4 @@
-package rabbitmq_demo
+package simple
 
 import (
 	"testing"
@@ -13,8 +13,4 @@ func TestProducerMessage(t *testing.T) {
 // 最简单的消费者 go test -run TestConsumerMessage
 func TestConsumerMessage(t *testing.T) {
 	ConsumerMessage()
-}
-
-func TestCallDelayMessage(t *testing.T) {
-	CallDelayMessage()
 }
