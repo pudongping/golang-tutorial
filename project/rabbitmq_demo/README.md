@@ -25,6 +25,14 @@ http://127.0.0.1:15672
 
 这里我们已经没有使用 `github.com/streadway/amqp` 库了，因为这个库现在已经没有维护了。这个库也推荐直接使用 `https://github.com/rabbitmq/amqp091-go` 库。
 
+## 一些常用命令
+
+命令 | 含义 |
+--- | ---
+rabbitmqctl list_queues | 查看队列
+rabbitmqctl list_queues name messages_ready messages_unacknowledged | 打印忘记确认的队列信息
+
 ## 代码示例
 
-- [一个最简单的生产者和消费者](./amqp.go)
+- [一个最简单的生产者和消费者](./simple/amqp.go)
+- [工作队列/任务队列]

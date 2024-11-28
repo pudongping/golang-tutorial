@@ -1,4 +1,4 @@
-package rabbitmq_demo
+package main
 
 import (
 	"context"
