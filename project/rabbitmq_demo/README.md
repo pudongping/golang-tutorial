@@ -31,6 +31,7 @@ http://127.0.0.1:15672
 --- | ---
 rabbitmqctl list_queues | 查看队列
 rabbitmqctl list_queues name messages_ready messages_unacknowledged | 打印忘记确认的队列信息
+rabbitmqctl list_exchanges | 列出所有的交换器
 
 ## 代码示例
 
