@@ -84,5 +84,6 @@ func Task() {
 }
 
 func main() {
+	// 作为生产者
 	Task()
 }

@@ -52,6 +52,9 @@ func Worker() {
 	)
 	failOnError("无法声明队列", err)
 
+	// 这里，我们将预取计数设置为 1
+	// 这就告诉 RabbitMQ 不要一次向一个 worker 发出多个消息，换句话来说就是
+	// 在处理并确认前一条消息之前，不要向 worker 发送新消息
 	err = ch.Qos(1, 0, false)
 	failOnError("设置 Qos 失败", err)
 
@@ -90,5 +93,6 @@ func Worker() {
 
 func main() {
 	log.Println("worker start.")
+	// 作为消费者
 	Worker()
 }
