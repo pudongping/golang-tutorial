@@ -36,3 +36,4 @@ rabbitmqctl list_queues name messages_ready messages_unacknowledged | 打印忘�
 
 - [一个最简单的生产者和消费者](./simple)
 - [工作队列/任务队列](./task_worker)：消息确认、消息持久化、消息公平分发
+- [发布/订阅](./publish_subscribe)

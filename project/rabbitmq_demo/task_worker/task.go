@@ -68,7 +68,7 @@ func Task() {
 	body := bodyFrom(os.Args)
 	err = ch.PublishWithContext(
 		ctx,
-		"",     // 交换机名称
+		"",     // 交换器名称
 		q.Name, // 队列名称
 		false,  // 必需的
 		false,  // 立即发布

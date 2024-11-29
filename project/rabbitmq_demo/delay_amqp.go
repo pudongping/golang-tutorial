@@ -24,11 +24,11 @@ func CallDelayMessage() {
 	}
 	defer ch.Close()
 
-	// 声明交换机
+	// 声明交换器
 	exchangeName := "delay_exchange"
 	err = ch.ExchangeDeclare(
-		exchangeName, // 交换机名称
-		"direct",     // 交换机类型
+		exchangeName, // 交换器名称
+		"direct",     // 交换器类型
 		true,         // 持久化
 		false,        // 自动删除
 		false,        // 内部使用
@@ -36,7 +36,7 @@ func CallDelayMessage() {
 		nil,          // 参数
 	)
 	if err != nil {
-		log.Fatalf("无法声明交换机：%s", err)
+		log.Fatalf("无法声明交换器：%s", err)
 	}
 
 	// 声明延迟队列
@@ -48,7 +48,7 @@ func CallDelayMessage() {
 		false,          // 排他性
 		false,          // 等待服务器确认
 		amqp.Table{
-			"x-dead-letter-exchange":    exchangeName,                               // 死信交换机
+			"x-dead-letter-exchange":    exchangeName,                               // 死信交换器
 			"x-dead-letter-routing-key": delayQueueName,                             // 死信队列路由键
 			"x-message-ttl":             int32(10 * time.Second / time.Millisecond), // 消息过期时间（毫秒）
 			"x-expires":                 int32(30 * time.Second / time.Millisecond), // 队列过期时间（毫秒）
@@ -72,16 +72,16 @@ func CallDelayMessage() {
 		log.Fatalf("无法声明死信队列：%s", err)
 	}
 
-	// 绑定延迟队列与交换机
+	// 绑定延迟队列与交换器
 	err = ch.QueueBind(
 		delayQueueName, // 队列名称
 		delayQueueName, // 路由键
-		exchangeName,   // 交换机名称
+		exchangeName,   // 交换器名称
 		false,          // 不等待服务器确认
 		nil,            // 参数
 	)
 	if err != nil {
-		log.Fatalf("无法绑定延迟队列与交换机：%s", err)
+		log.Fatalf("无法绑定延迟队列与交换器：%s", err)
 	}
 
 	// 创建等待组
@@ -106,7 +106,7 @@ func ProducerDelayMessage(ch *amqp.Channel, exchangeName, queueName string) {
 		message := fmt.Sprintf("投递时间：%s Delayed message %d", time.Now().Format("2006-01-02 15:04:05"), i)
 		err := ch.PublishWithContext(
 			context.Background(),
-			exchangeName, // 交换机名称
+			exchangeName, // 交换器名称
 			queueName,    // 路由键
 			false,        // 必需的
 			false,        // 立即发布
