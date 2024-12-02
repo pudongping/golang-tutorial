@@ -32,9 +32,10 @@ http://127.0.0.1:15672
 rabbitmqctl list_queues | 查看队列
 rabbitmqctl list_queues name messages_ready messages_unacknowledged | 打印忘记确认的队列信息
 rabbitmqctl list_exchanges | 列出所有的交换器
+rabbitmqctl list_bindings | 列出绑定关系
 
 ## 代码示例
 
 - [一个最简单的生产者和消费者](./simple)
 - [工作队列/任务队列](./task_worker)：消息确认、消息持久化、消息公平分发
-- [发布/订阅](./publish_subscribe)
+- [发布/订阅](./publish_subscribe)：一个发布者发布一条消息，多个订阅者都可以接收到同样一条消息

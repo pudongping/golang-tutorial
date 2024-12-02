@@ -58,7 +58,7 @@ func ProducerMessage() {
 
 	err = ch.PublishWithContext(
 		ctx,
-		"",     // 交换器名称
+		"",     // 交换器名称（采用的是默认交换器）
 		q.Name, // 队列名称
 		false,  // 必需的
 		false,  // 立即发布
