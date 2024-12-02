@@ -1,7 +1,11 @@
 package main
 
 import (
+	"context"
 	"log"
+	"os"
+	"strings"
+	"time"
 
 	amqp "github.com/rabbitmq/amqp091-go"
 )
@@ -19,8 +23,8 @@ const (
 )
 
 const (
-	exchangeName = "logs_sample"
-	exchangeType = "fanout" // 扇出
+	exchangeName = "logs_direct"
+	exchangeType = "direct"
 )
 
 func failOnError(msg string, err error) {
@@ -29,6 +33,29 @@ func failOnError(msg string, err error) {
 	}
 }
 
+func bodyFrom(args []string) string {
+	var s string
+	if (len(args) < 2) || os.Args[1] == "" {
+		s = "hello_rabbitmq"
+	} else {
+		s = strings.Join(args[1:], " ")
+	}
+
+	return s
+}
+
+// 设置消息类型：info、warning、error
+func severityFrom(args []string) string {
+	var s string
+	if (len(args) < 2) || os.Args[1] == "" {
+		s = "info"
+	} else {
+		s = os.Args[1]
+	}
+	return s
+}
+
+// 模拟发送消息
 func main() {
 	conn, err := amqp.Dial(url)
 	failOnError("无法连接到 RabbitMQ", err)
@@ -50,46 +77,23 @@ func main() {
 	)
 	failOnError("声明交换器失败", err)
 
-	q, err := ch.QueueDeclare(
-		"",
-		false,
-		false,
-		true,
-		false,
-		nil,
-	)
-	failOnError("声明队列失败", err)
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
 
-	// 绑定是交换器和队列之间的关系。这可以简单地理解为：队列对来自此交换器的消息感兴趣。
-	err = ch.QueueBind(
-		q.Name, // 队列名称
-		"",
+	body := bodyFrom(os.Args)
+	err = ch.PublishWithContext(
+		ctx,
 		exchangeName,
+		severityFrom(os.Args),
 		false,
-		nil,
+		false,
+		amqp.Publishing{
+			ContentType: "text/plain",
+			Body:        []byte(body),
+		},
 	)
-	failOnError("绑定队列失败", err)
+	failOnError("推送消息失败", err)
 
-	msgs, err := ch.Consume(
-		q.Name, // 队列名称
-		"",     // 消费者
-		true,
-		false,
-		false,
-		false,
-		nil,
-	)
-	failOnError("注册一个消费者失败", err)
-
-	forever := make(chan struct{})
-
-	go func() {
-		for d := range msgs {
-			log.Printf("🫡 收到消息 🫱 %s \n", d.Body)
-		}
-	}()
-
-	log.Printf(" [*] Waiting for messages. To exit press CTRL+C \n")
-	<-forever
+	log.Printf(" [x] Sent %s \n", body)
 
 }

@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"os"
 
 	amqp "github.com/rabbitmq/amqp091-go"
 )
@@ -19,8 +20,8 @@ const (
 )
 
 const (
-	exchangeName = "logs_sample"
-	exchangeType = "fanout" // 扇出
+	exchangeName = "logs_direct"
+	exchangeType = "direct" // 扇出
 )
 
 func failOnError(msg string, err error) {
@@ -60,15 +61,25 @@ func main() {
 	)
 	failOnError("声明队列失败", err)
 
-	// 绑定是交换器和队列之间的关系。这可以简单地理解为：队列对来自此交换器的消息感兴趣。
-	err = ch.QueueBind(
-		q.Name, // 队列名称
-		"",
-		exchangeName,
-		false,
-		nil,
-	)
-	failOnError("绑定队列失败", err)
+	if len(os.Args) < 2 {
+		log.Printf("Usage: %s [info] [warning] [error]", os.Args[0])
+		os.Exit(0)
+	}
+
+	for _, s := range os.Args[1:] {
+		log.Printf("绑定队列 [%s] 到交换器 [%s] 使用路由 key [%s] ", q.Name, exchangeName, s)
+
+		// 绑定是交换器和队列之间的关系。这可以简单地理解为：队列对来自此交换器的消息感兴趣。
+		err = ch.QueueBind(
+			q.Name, // 队列名称
+			s,
+			exchangeName,
+			false,
+			nil,
+		)
+		failOnError("绑定队列失败", err)
+
+	}
 
 	msgs, err := ch.Consume(
 		q.Name, // 队列名称
