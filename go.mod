@@ -5,6 +5,7 @@ go 1.16
 require (
 	github.com/PuerkitoBio/goquery v1.8.1
 	github.com/bwmarrin/snowflake v0.3.0
+	github.com/corona10/goimagehash v1.1.0 // indirect
 	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc
 	github.com/disintegration/imaging v1.6.2
 	github.com/emersion/go-imap v1.2.1

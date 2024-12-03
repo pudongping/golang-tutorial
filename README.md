@@ -92,6 +92,7 @@
 - [使用 go-playground/validator 来做参数校验](./project/validator_demo)
 - [使用 golang-jwt/jwt 做鉴权](./project/jwt_demo)
 - [接口速率限制：漏桶算法、令牌桶算法](./project/ratelimit_demo)
+- [图片相似度对比](./project/compare_image_similarity)
 
 ## Project supported by JetBrains
 
