@@ -52,10 +52,10 @@ func main() {
 	failOnError("声明交换器失败", err)
 
 	q, err := ch.QueueDeclare(
-		"",
+		"",    // 空字符串作为队列名称，将会得到一个随机生成的名称，类似 amq.gen-6OzD2FA4N-tCo_C4pA1UmQ
+		false, // 非持久队列
 		false,
-		false,
-		true,
+		true, // 独占队列（当前声明队列的连接关闭后即被删除）
 		false,
 		nil,
 	)
