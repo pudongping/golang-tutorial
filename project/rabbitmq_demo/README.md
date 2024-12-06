@@ -25,6 +25,15 @@ http://127.0.0.1:15672
 
 这里我们已经没有使用 `github.com/streadway/amqp` 库了，因为这个库现在已经没有维护了。这个库也推荐直接使用 `https://github.com/rabbitmq/amqp091-go` 库。
 
+### 消息属性
+
+`AMQP 091` 协议预定义了消息附带的 **14** 个属性集。除以下属性外，大多数属性很少使用：
+
+- persistent：将消息标记为持久性（值为 true）或瞬态（ false）。
+- content_type：用于描述编码的 `mime` 类型。例如，对于经常使用的JSON编码，将此属性设置为 `application/json` 是一个好习惯。
+- reply_to：常用于命名回调队列
+- correlation_id：有助于将 RPC 响应与请求相关联。
+
 ## 一些常用命令
 
 命令 | 含义 |
