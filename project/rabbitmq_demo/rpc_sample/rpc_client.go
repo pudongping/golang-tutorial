@@ -5,6 +5,8 @@ import (
 	"log"
 	"math/rand"
 	"os"
+	"strconv"
+	"strings"
 	"time"
 
 	amqp "github.com/rabbitmq/amqp091-go"
@@ -20,12 +22,6 @@ const (
 
 const (
 	url = "amqp://" + username + ":" + password + "@" + host + ":5672/" + vhost
-)
-
-const (
-	exchangeName = "logs_topic"
-	exchangeType = "topic"
-	queueName    = "rpc_queue"
 )
 
 func failOnError(msg string, err error) {
@@ -47,6 +43,18 @@ func randomString(l int) string {
 // 生成随机整数
 func randInt(min int, max int) int {
 	return min + rand.Intn(max-min)
+}
+
+func bodyFrom(args []string) int {
+	var s string
+	if (len(args) < 2) || os.Args[1] == "" {
+		s = "30"
+	} else {
+		s = strings.Join(args[1:], " ")
+	}
+	n, err := strconv.Atoi(s)
+	failOnError("无法转换参数为整数", err)
+	return n
 }
 
 func fibonacciRPC(n int) (res int, err error) {
@@ -88,84 +96,38 @@ func fibonacciRPC(n int) (res int, err error) {
 
 	err = ch.PublishWithContext(
 		ctx,
-		"", // 交换器名称
+		"",          // 交换器名称
+		"rpc_queue", // 路由 key
+		false,
+		false,
+		amqp.Publishing{
+			ContentType:   "text/plain",
+			CorrelationId: corrID, // 设置为每个请求的唯一值
+			ReplyTo:       q.Name, // 设置为回调队列
+			Body:          []byte(strconv.Itoa(n)),
+		})
+	failOnError("发布消息失败", err)
 
-	)
+	for d := range msgs {
+		if corrID == d.CorrelationId {
+			res, err = strconv.Atoi(string(d.Body))
+			failOnError("无法转换消息为整数", err)
+			break
+		}
+	}
 
+	return
 }
 
 func main() {
-	conn, err := amqp.Dial(url)
-	failOnError("无法连接到 RabbitMQ", err)
-	defer conn.Close()
+	// 生成随机种子
+	rand.New(rand.NewSource(time.Now().UTC().UnixNano()))
 
-	ch, err := conn.Channel()
-	failOnError("无法打开通道", err)
-	defer ch.Close()
+	n := bodyFrom(os.Args)
 
-	// 声明交换器
-	err = ch.ExchangeDeclare(
-		exchangeName,
-		exchangeType,
-		true,
-		false,
-		false,
-		false,
-		nil,
-	)
-	failOnError("声明交换器失败", err)
+	log.Printf(" [👉] 请求 fib(%d) \n", n)
+	res, err := fibonacciRPC(n)
+	failOnError("RPC 失败", err)
 
-	q, err := ch.QueueDeclare(
-		"",    // 空字符串作为队列名称，将会得到一个随机生成的名称，类似 amq.gen-6OzD2FA4N-tCo_C4pA1UmQ
-		false, // 非持久队列
-		false,
-		true, // 独占队列（当前声明队列的连接关闭后即被删除）
-		false,
-		nil,
-	)
-	failOnError("声明队列失败", err)
-
-	if len(os.Args) < 2 {
-		log.Printf("Usage: %s [binding_key]...", os.Args[0])
-		os.Exit(0)
-	}
-
-	// 绑定 topic
-	for _, s := range os.Args[1:] {
-		log.Printf("绑定队列 [%s] 到交换器 [%s] 使用路由 key [%s] ", q.Name, exchangeName, s)
-
-		// 绑定是交换器和队列之间的关系。这可以简单地理解为：队列对来自此交换器的消息感兴趣。
-		err = ch.QueueBind(
-			q.Name, // 队列名称
-			s,
-			exchangeName,
-			false,
-			nil,
-		)
-		failOnError("绑定队列失败", err)
-
-	}
-
-	msgs, err := ch.Consume(
-		q.Name, // 队列名称
-		"",     // 消费者
-		true,
-		false,
-		false,
-		false,
-		nil,
-	)
-	failOnError("注册一个消费者失败", err)
-
-	forever := make(chan struct{})
-
-	go func() {
-		for d := range msgs {
-			log.Printf("🫡 收到消息 🫱 %s \n", d.Body)
-		}
-	}()
-
-	log.Printf(" [*] Waiting for messages. To exit press CTRL+C \n")
-	<-forever
-
+	log.Printf(" [👉] 结果 fib(%d) = %d \n", n, res)
 }

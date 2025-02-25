@@ -3,8 +3,7 @@ package main
 import (
 	"context"
 	"log"
-	"os"
-	"strings"
+	"strconv"
 	"time"
 
 	amqp "github.com/rabbitmq/amqp091-go"
@@ -22,37 +21,20 @@ const (
 	url = "amqp://" + username + ":" + password + "@" + host + ":5672/" + vhost
 )
 
-const (
-	exchangeName = "logs_topic"
-	exchangeType = "topic"
-)
-
 func failOnError(msg string, err error) {
 	if err != nil {
 		log.Fatalf("%s ==> %s", msg, err)
 	}
 }
 
-func bodyFrom(args []string) string {
-	var s string
-	if (len(args) < 3) || os.Args[2] == "" {
-		s = "hello_rabbitmq"
-	} else {
-		s = strings.Join(args[2:], " ")
+func fib(n int) int {
+	if n == 0 {
+		return 0
 	}
-
-	return s
-}
-
-// 设置消息类型：info、warning、error
-func severityFrom(args []string) string {
-	var s string
-	if (len(args) < 2) || os.Args[1] == "" {
-		s = "anonymous.info"
-	} else {
-		s = os.Args[1]
+	if n == 1 {
+		return 1
 	}
-	return s
+	return fib(n-1) + fib(n-2)
 }
 
 // 模拟发送消息
@@ -65,35 +47,67 @@ func main() {
 	failOnError("无法打开通道", err)
 	defer ch.Close()
 
-	// 声明交换器
-	err = ch.ExchangeDeclare(
-		exchangeName,
-		exchangeType,
-		true,
-		false,
-		false,
-		false,
-		nil,
+	q, err := ch.QueueDeclare(
+		"rpc_queue", // 队列名称
+		false,       // 是否持久化
+		false,       // 是否自动删除
+		false,       // 是否排他
+		false,       // 是否阻塞
+		nil,         // 额外属性
 	)
-	failOnError("声明交换器失败", err)
+	failOnError("声明队列失败", err)
 
-	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-	defer cancel()
-
-	body := bodyFrom(os.Args)
-	err = ch.PublishWithContext(
-		ctx,
-		exchangeName,
-		severityFrom(os.Args),
-		false,
-		false,
-		amqp.Publishing{
-			ContentType: "text/plain",
-			Body:        []byte(body),
-		},
+	err = ch.Qos(
+		1,     // 消费者未确认消息的最大数量
+		0,     // 消费者未确认消息的最大字节数
+		false, // 应用于整个通道
 	)
-	failOnError("推送消息失败", err)
+	failOnError("设置 Qos 失败", err)
 
-	log.Printf(" [x] Sent %s \n", body)
+	msgs, err := ch.Consume(
+		q.Name, // 队列名称
+		"",     // 消费者
+		false,  // 是否自动应答
+		false,  // 是否排他
+		false,  // no-local
+		false,  // no-wait
+		nil,    // 额外属性
+	)
+	failOnError("注册一个消费者失败", err)
+
+	forever := make(chan struct{})
+
+	go func() {
+		ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+		defer cancel()
+
+		for d := range msgs {
+			n, err := strconv.Atoi(string(d.Body))
+			failOnError("无法转换消息为整数", err)
+
+			log.Printf("收到请求: %d", n)
+			response := fib(n)
+
+			err = ch.PublishWithContext(
+				ctx,
+				"",        // 交换器名称
+				d.ReplyTo, // 路由 key
+				false,     // 强制
+				false,     // 立即
+				amqp.Publishing{
+					ContentType:   "text/plain",
+					CorrelationId: d.CorrelationId,
+					Body:          []byte(strconv.Itoa(response)),
+				})
+			failOnError("无法发送消息", err)
+
+			// 确认消息
+			d.Ack(false)
+		}
+
+	}()
+
+	log.Printf("🐇 等待 RPC 请求 🐇")
+	<-forever
 
 }
