@@ -51,3 +51,4 @@ rabbitmqctl list_bindings | 列出绑定关系
 - [路由（主要演示了 direct 交换器的使用）](./route)：生产者将消息投递到不同的路由 key 中，消费者通过订阅不同的路由 key 从而接收不同类型的消息
 - [topic 交换器](./topic)
 - [RPC](./rpc_sample)
+- [TTL 消息](./ttl_message)：设置消息自动过期时间
