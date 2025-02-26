@@ -57,6 +57,7 @@ func main() {
 	)
 	failOnError("声明队列失败", err)
 
+	// 设置每次投递一个消息
 	err = ch.Qos(
 		1,     // 消费者未确认消息的最大数量
 		0,     // 消费者未确认消息的最大字节数
@@ -86,8 +87,10 @@ func main() {
 			failOnError("无法转换消息为整数", err)
 
 			log.Printf("收到请求: %d", n)
+			// 执行RPC业务
 			response := fib(n)
 
+			// 将结果发布到执行的回调队列(返回RPC调用结果)
 			err = ch.PublishWithContext(
 				ctx,
 				"",        // 交换器名称

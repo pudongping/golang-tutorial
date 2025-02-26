@@ -33,12 +33,22 @@ func ProducerMessage() {
 	// 该连接抽象了套接字连接，并为我们处理协议版本协商和认证等
 	conn, err := amqp.Dial(url)
 	failOnError("无法连接到 RabbitMQ", err)
-	defer conn.Close()
+	defer func(conn *amqp.Connection) {
+		err := conn.Close()
+		if err != nil {
+
+		}
+	}(conn)
 
 	// 2. 创建一个通道，
 	ch, err := conn.Channel()
 	failOnError("无法打开通道", err)
-	defer ch.Close()
+	defer func(ch *amqp.Channel) {
+		err := ch.Close()
+		if err != nil {
+
+		}
+	}(ch)
 
 	// 3. 声明消息要发送到的队列
 	q, err := ch.QueueDeclare(
@@ -78,12 +88,22 @@ func ConsumerMessage() {
 	// 创建 RabbitMQ 连接
 	conn, err := amqp.Dial(url)
 	failOnError("无法连接到 RabbitMQ", err)
-	defer conn.Close()
+	defer func(conn *amqp.Connection) {
+		err := conn.Close()
+		if err != nil {
+
+		}
+	}(conn)
 
 	// 创建通道
 	ch, err := conn.Channel()
 	failOnError("无法打开通道", err)
-	defer ch.Close()
+	defer func(ch *amqp.Channel) {
+		err := ch.Close()
+		if err != nil {
+
+		}
+	}(ch)
 
 	// 声明队列
 	// 请注意：我们也在这里声明队列。因为我们可能在发布者（生产者）之前启动使用者（消费者）
@@ -115,7 +135,7 @@ func ConsumerMessage() {
 	go func() {
 		for msg := range msgs {
 			log.Printf("收到消息: %s \n", string(msg.Body))
-			// 手动回复 ack
+			// 手动回复 ack （如果上面 自动应答 设置为 false，那么则此处就需要设置 msg.Ack(false)，上面的 自动应答 设置为 true 那么这里就不需要设置）
 			// msg.Ack(false)
 		}
 	}()

@@ -84,7 +84,7 @@ func main() {
 	err = ch.PublishWithContext(
 		ctx,
 		exchangeName,
-		severityFrom(os.Args),
+		severityFrom(os.Args), // 设置消息类型：info、warning、error
 		false,
 		false,
 		amqp.Publishing{

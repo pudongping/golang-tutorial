@@ -73,7 +73,7 @@ func main() {
 	msgs, err := ch.Consume(
 		q.Name, // 队列名称
 		"",     // 消费者
-		true,
+		true,   // 设置为 true，表示自动应答
 		false,
 		false,
 		false,

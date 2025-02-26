@@ -109,6 +109,7 @@ func fibonacciRPC(n int) (res int, err error) {
 	failOnError("发布消息失败", err)
 
 	for d := range msgs {
+		// 验证响应与请求的关系
 		if corrID == d.CorrelationId {
 			res, err = strconv.Atoi(string(d.Body))
 			failOnError("无法转换消息为整数", err)

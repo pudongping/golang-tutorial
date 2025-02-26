@@ -81,6 +81,7 @@ func main() {
 
 	}
 
+	// 创建消费者并消费指定消息队列中的消息
 	msgs, err := ch.Consume(
 		q.Name, // 队列名称
 		"",     // 消费者
