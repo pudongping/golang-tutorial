@@ -52,3 +52,4 @@ rabbitmqctl list_bindings | 列出绑定关系
 - [topic 交换器](./topic)
 - [RPC](./rpc_sample)
 - [TTL 消息](./ttl_message)：设置消息自动过期时间
+- [实现延迟队列](./delay_message)：两种方式实现延迟队列
