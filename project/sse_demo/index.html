@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>SSE实时时间推送演示</h1>
+<div id="output"></div>
+
+<script>
+    const eventSource = new EventSource('/events');
+
+    eventSource.onmessage = function (e) {
+        document.getElementById('output').innerHTML += e.data + '<br>';
+    };
+
+    // 错误处理
+    eventSource.onerror = function (e) {
+        console.error('EventSource 发生错误:', e);
+        eventSource.close();
+    };
+</script>
+</body>
+</html>

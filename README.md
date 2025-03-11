@@ -95,6 +95,7 @@
 - [图片相似度对比](./project/compare_image_similarity)
 - [读取/生成 二维码](./project/qr_code_demo)
 - [获取 goroutine ID](./project/get_goroutine_id)
+- [SSE 实时消息示例](./project/sse_demo)
 
 ## Project supported by JetBrains
 
