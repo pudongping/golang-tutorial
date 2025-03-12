@@ -377,6 +377,7 @@ require (
 	github.com/sagikazarmark/locafero v0.4.0 // indirect
 	github.com/sagikazarmark/slog-shim v0.1.0 // indirect
 	github.com/sean-/seed v0.0.0-20170313163322-e2103e2c3529 // indirect
+	github.com/segmentio/kafka-go v0.4.47 // indirect
 	github.com/shirou/gopsutil/v3 v3.22.10 // indirect
 	github.com/sirupsen/logrus v1.6.0 // indirect
 	github.com/skip2/go-qrcode v0.0.0-20200617195104-da1b6568686e // indirect

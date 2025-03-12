@@ -96,6 +96,8 @@
 - [读取/生成 二维码](./project/qr_code_demo)
 - [获取 goroutine ID](./project/get_goroutine_id)
 - [SSE 实时消息示例](./project/sse_demo)
+- [Go 操作 ETCD](./project/etcd_learn)
+- [第三方包 kafka-go 操作 Kafka](./project/kafka_learn)
 
 ## Project supported by JetBrains
 
