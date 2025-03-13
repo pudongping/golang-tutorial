@@ -98,6 +98,7 @@
 - [SSE 实时消息示例](./project/sse_demo)
 - [Go 操作 ETCD](./project/etcd_learn)
 - [第三方包 kafka-go 操作 Kafka](./project/kafka_learn)
+- [学习 influxDB 数据库示例](./project/influxDB_learn)
 
 ## Project supported by JetBrains
 
