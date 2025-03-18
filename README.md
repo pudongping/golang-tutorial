@@ -99,6 +99,7 @@
 - [Go 操作 ETCD](./project/etcd_learn)
 - [第三方包 kafka-go 操作 Kafka](./project/kafka_learn)
 - [学习 influxDB 数据库示例](./project/influxDB_learn)
+- [第三方包 apolloconfig/agollo 操作 Apollo（阿波罗）示例](./project/Apollo_learn)
 
 ## Project supported by JetBrains
 
