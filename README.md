@@ -100,6 +100,7 @@
 - [第三方包 kafka-go 操作 Kafka](./project/kafka_learn)
 - [学习 influxDB 数据库示例](./project/influxDB_learn)
 - [第三方包 apolloconfig/agollo 操作 Apollo（阿波罗）示例](./project/Apollo_learn)
+- [学习 go-kit 示例代码](./project/gokit_learn)
 
 ## Project supported by JetBrains
 
