@@ -102,6 +102,7 @@
 - [第三方包 apolloconfig/agollo 操作 Apollo（阿波罗）示例](./project/Apollo_learn)
 - [学习 go-kit 示例代码](./project/gokit_learn)
 - [杜绝缓存击穿！singleflight 包使用](./project/singleflight_learn)
+- [依赖注入神器 wire 的使用](./project/wire_learn)
 
 ## Project supported by JetBrains
 
