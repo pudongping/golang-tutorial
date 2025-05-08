@@ -104,6 +104,7 @@
 - [杜绝缓存击穿！singleflight 包使用](./project/singleflight_learn)
 - [依赖注入神器 wire 的使用](./project/wire_learn)
 - [GORM Gen 学习使用](./project/gen_learn)
+- [Prometheus 普罗米修斯 Go Client 使用](./project/Prometheus_learn)
 
 ## Project supported by JetBrains
 
