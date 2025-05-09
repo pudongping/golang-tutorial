@@ -203,6 +203,9 @@ require (
 	github.com/census-instrumentation/opencensus-proto v0.4.1 // indirect
 	github.com/cespare/xxhash v1.1.0 // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
+	github.com/chromedp/cdproto v0.0.0-20250403032234-65de8f5d025b // indirect
+	github.com/chromedp/chromedp v0.13.6 // indirect
+	github.com/chromedp/sysutil v1.1.0 // indirect
 	github.com/chzyer/logex v1.2.0 // indirect
 	github.com/chzyer/readline v1.5.0 // indirect
 	github.com/chzyer/test v0.0.0-20210722231415-061457976a23 // indirect
@@ -240,6 +243,7 @@ require (
 	github.com/go-fonts/stix v0.1.0 // indirect
 	github.com/go-gl/glfw v0.0.0-20190409004039-e6da0acd62b1 // indirect
 	github.com/go-gl/glfw/v3.3/glfw v0.0.0-20200222043503-6f7a984d4dc4 // indirect
+	github.com/go-json-experiment/json v0.0.0-20250211171154-1ae217ad3535 // indirect
 	github.com/go-kit/kit v0.13.0 // indirect
 	github.com/go-kit/log v0.2.0 // indirect
 	github.com/go-latex/latex v0.0.0-20210823091927-c0d11ff05a81 // indirect
@@ -252,6 +256,9 @@ require (
 	github.com/go-stack/stack v1.8.0 // indirect
 	github.com/go-task/slim-sprig v0.0.0-20210107165309-348f09dbbbc0 // indirect
 	github.com/go-viper/mapstructure/v2 v2.2.1 // indirect
+	github.com/gobwas/httphead v0.1.0 // indirect
+	github.com/gobwas/pool v0.2.1 // indirect
+	github.com/gobwas/ws v1.4.0 // indirect
 	github.com/goccy/go-json v0.10.2 // indirect
 	github.com/goccy/go-yaml v1.11.0 // indirect
 	github.com/godbus/dbus/v5 v5.0.4 // indirect
