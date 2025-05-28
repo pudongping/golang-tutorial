@@ -105,7 +105,7 @@
 - [依赖注入神器 wire 的使用](./project/wire_learn)
 - [GORM Gen 学习使用](./project/gen_learn)
 - [Prometheus 普罗米修斯 Go Client 使用](./project/Prometheus_learn)
-- [chromedp 驱动 Chrome DevTools](./project/chromedp_learn)
+- [chromedp 驱动 Chrome DevTools](./project/chromedp_demo)
 
 ## Project supported by JetBrains
 
