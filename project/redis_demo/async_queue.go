@@ -43,6 +43,9 @@ func (a *AsyncQueue) Enqueue(jobPayload []byte) error {
 
 func (a *AsyncQueue) Dequeue() ([]byte, error) {
 	return a.RedisClient.RPop(a.QueueName).Bytes()
+	// 或者使用 BRPop 阻塞式弹出
+	// 可以设置阻塞时间为 0，表示一直等待直到有元素可弹出，也可以设置一个大于 0 的值，表示等待指定的时间
+	// return a.RedisClient.BRPop(0, a.QueueName).Bytes()
 }
 
 // AsyncDelayQueue 异步延迟队列

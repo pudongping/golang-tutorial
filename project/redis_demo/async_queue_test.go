@@ -101,7 +101,12 @@ func TestAsyncDelayQueueConsumer(t *testing.T) {
 			fmt.Println("取出任务失败：", err)
 			break
 		}
-		
+
+		// 在这个位置，取出了数据之后，需要做的事情是
+		// 1. 从 zset 中移除数据
+		// 2. 将获取的数据再往新的队列中推，所有的业务逻辑处理放到新的队列中去消费处理。业务逻辑不能放到从 zset 中取到数据后处理，否则会有时间差
+		// 并且移除数据和推送到新的队列中需要是原子操作
+
 		// 反序列化任务
 		var task map[string]interface{}
 		if err := json.Unmarshal([]byte(val[0].Member.(string)), &task); err != nil {
