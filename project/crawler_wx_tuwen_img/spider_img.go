@@ -127,18 +127,36 @@ func (c *WXCrawler) FetchWXHTMLContent(wxTuWenUrl string) (string, error) {
 }
 
 func (c *WXCrawler) ParseImgUrls(html string) ([]string, error) {
-	// FindAllStringSubmatch返回所有正则表达式的匹配项
-	// 每个匹配项都是由原始文本和各个分组匹配项组成的slice
-	// 因为这里使用了([^']+)'进行了一次分组匹配而我们想要的就是这个分组匹配的内容 所以使用了v[1]
-	results := reImgURL.FindAllStringSubmatch(html, -1)
-	if 0 == len(results) {
-		return nil, errors.Wrap(errors.New("图片链接提取失败"), "ParseImgUrls 出错")
+	// 提取 picture_page_info_list 内容块
+	reList := regexp.MustCompile(`window\.picture_page_info_list\s*=\s*(\[[\s\S]*?\]);`)
+	listMatch := reList.FindStringSubmatch(html)
+	if len(listMatch) < 2 {
+		return nil, errors.New("未找到 picture_page_info_list 内容")
 	}
-	urls := make([]string, 0, len(results))
-	for _, v := range results {
-		urls = append(urls, v[1]) // 输出匹配到的cdn_url的值
+	listContent := listMatch[1]
+
+	// 提取 cdn_url，排除 watermark_info 下的
+	reImg := regexp.MustCompile(`cdn_url:\s*'([^']+)'`)
+	reWatermark := regexp.MustCompile(`watermark_info\s*:\s*\{[\s\S]*?cdn_url:\s*'([^']+)'[\s\S]*?\}`)
+
+	// 先找所有 watermark_info 下的 cdn_url
+	watermarkUrls := make(map[string]struct{})
+	for _, wm := range reWatermark.FindAllStringSubmatch(listContent, -1) {
+		if len(wm) > 1 {
+			watermarkUrls[wm[1]] = struct{}{}
+		}
 	}
 
+	// 再找所有 cdn_url，排除水印
+	results := reImg.FindAllStringSubmatch(listContent, -1)
+	urls := make([]string, 0, len(results))
+	for _, v := range results {
+		if len(v) > 1 {
+			if _, isWatermark := watermarkUrls[v[1]]; !isWatermark {
+				urls = append(urls, v[1])
+			}
+		}
+	}
 	return urls, nil
 }
 
