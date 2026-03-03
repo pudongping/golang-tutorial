@@ -106,14 +106,7 @@
 - [GORM Gen 学习使用](./project/gen_learn)
 - [Prometheus 普罗米修斯 Go Client 使用](./project/Prometheus_learn)
 - [chromedp 驱动 Chrome DevTools](./project/chromedp_demo)
-
-## Project supported by JetBrains
-
-Many thanks to Jetbrains for kindly providing a license for me to work on this and other open-source projects.
-
-<a href="https://jb.gg/OpenSourceSupport" target="_blank">
-<img width="150px" src="https://s2.loli.net/2022/10/10/xlWUgcwi32J4oBT.png" alt="jb_beam">
-</a>
+- [hibiken/asynq 实现延迟队列、异步任务、优先级队列](./project/asynq_learn)
 
 ## LICENSE
 
