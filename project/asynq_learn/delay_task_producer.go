@@ -33,7 +33,8 @@ func main() {
 	info, err := client.EnqueueContext(ctx, task,
 		asynq.Queue(QueueDelayTaskEmailDefault), // 指定延迟任务专用队列
 		asynq.MaxRetry(3),                       // 最大重试次数3次
-		asynq.ProcessIn(30*time.Second),         // 核心：延迟30秒后处理
+		// 如果 ProcessIn 和 ProcessAt 同时出现时，则后面的会覆盖前面的延迟时间
+		asynq.ProcessIn(30*time.Second), // 核心：延迟30秒后处理
 		// asynq.ProcessAt(time.Now().Add(30*time.Second)), // 核心：延迟30秒后处理（也可以指定具体时间）
 		asynq.Timeout(30*time.Second), // 任务处理超时时间30秒
 	)
