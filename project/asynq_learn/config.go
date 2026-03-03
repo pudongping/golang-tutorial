@@ -9,6 +9,10 @@ const (
 const (
 	QueueAsyncTaskEmailDefault = "async_task:email:default"
 	QueueDelayTaskEmailDefault = "delay_task:email:default"
+	// 优先级队列
+	QueuePriorityPlatinum = "priority:email:platinum" // 铂金
+	QueuePriorityDiamond  = "priority:email:diamond"  // 钻石
+	QueuePriorityNormal   = "priority:email:normal"   // 普通
 )
 
 // 任务类型
