@@ -8,6 +8,7 @@ const (
 // 队列名称
 const (
 	QueueAsyncTaskEmailDefault = "async_task:email:default"
+	QueueDelayTaskEmailDefault = "delay_task:email:default"
 )
 
 // 任务类型

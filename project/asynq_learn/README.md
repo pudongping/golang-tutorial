@@ -17,3 +17,20 @@ go run async_task_consumer.go config.go
 # 启动生产者
 go run async_task_producer.go config.go 
 ```
+
+## 2. 延迟队列
+
+- [延迟队列生产者](delay_task_producer.go)
+- [延迟队列消费者](delay_task_consumer.go)
+
+演示延迟 30 秒发送邮件。
+
+启动方式
+
+```shell
+# 启动延迟任务消费者
+go run delay_task_consumer.go config.go
+
+# 启动延迟任务生产者
+go run delay_task_producer.go config.go
+```
