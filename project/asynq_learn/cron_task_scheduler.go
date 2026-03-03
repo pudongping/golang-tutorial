@@ -18,11 +18,11 @@ func main() {
 
 	// 定义任务：每隔 10 秒执行一次
 	// 使用 cron 表达式 "@every 10s"
-	task := asynq.NewTask(TypePeriodicGreeting, nil)
+	task := asynq.NewTask(TypeCronGreeting, nil)
 
 	// 注册任务
-	// 注意：为了避免混淆，我们指定这个任务进入 QueuePeriodicTask 队列
-	entryID, err := scheduler.Register("@every 10s", task, asynq.Queue(QueuePeriodicTask))
+	// 注意：为了避免混淆，我们指定这个任务进入 QueueCronTask 队列
+	entryID, err := scheduler.Register("@every 10s", task, asynq.Queue(QueueCronTask))
 	if err != nil {
 		log.Fatalf("无法注册任务: %v", err)
 	}

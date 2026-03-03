@@ -1,6 +1,6 @@
 # asynq 包
 
-通过 [hibiken/asynq](https://github.com/hibiken/asynq) 包实现异步任务队列。
+通过 [hibiken/asynq](https://github.com/hibiken/asynq) 包实现异步任务队列、延迟队列、优先级队列、定时任务队列。
 
 
 ## 1. 异步队列
@@ -58,10 +58,10 @@ go run priority_task_consumer.go config.go
 go run priority_task_producer.go config.go
 ```
 
-## 4. 定时任务 (Periodic Task)
+## 4. 定时任务 (Cron Task)
 
-- [定时任务调度器](periodic_task_scheduler.go)
-- [定时任务消费者](periodic_task_consumer.go)
+- [定时任务调度器](cron_task_scheduler.go)
+- [定时任务消费者](cron_task_consumer.go)
 
 演示每隔 10 秒打印一句问候语。
 
@@ -69,8 +69,8 @@ go run priority_task_producer.go config.go
 
 ```shell
 # 启动定时任务消费者（处理实际逻辑）
-go run periodic_task_consumer.go config.go
+go run cron_task_consumer.go config.go
 
 # 启动调度器（负责定时触发任务）
-go run periodic_task_scheduler.go config.go
+go run cron_task_scheduler.go config.go
 ```
