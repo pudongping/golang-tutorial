@@ -24,6 +24,8 @@ func main() {
 	// 1. 发送铂金会员任务 (最高优先级)
 	for i := 0; i < taskCounts; i++ {
 		enqueueTask(ctx, client, "user_platinum", QueuePriorityPlatinum, fmt.Sprintf("Platinum User %d", i))
+		// 下面的这一行不会进入队列中，因为 Unique 设置了 1 分钟内同一用户的任务只能入队一次
+		enqueueTask(ctx, client, "user_platinum", QueuePriorityPlatinum, fmt.Sprintf("Platinum User %d", i))
 	}
 
 	// 2. 发送钻石会员任务 (中等优先级)
@@ -49,7 +51,12 @@ func enqueueTask(ctx context.Context, client *asynq.Client, userID, queueName, s
 	data, _ := json.Marshal(payload)
 	task := asynq.NewTask(TypeEmailSend, data)
 
-	info, err := client.EnqueueContext(ctx, task, asynq.Queue(queueName))
+	info, err := client.EnqueueContext(
+		ctx,
+		task,
+		asynq.Queue(queueName),
+		asynq.Unique(time.Minute), // 确保同一用户的任务在一分钟内不会重复入队
+	)
 	if err != nil {
 		log.Printf("任务入队失败 [%s]: %v", queueName, err)
 	} else {

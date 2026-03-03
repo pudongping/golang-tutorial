@@ -57,3 +57,20 @@ go run priority_task_consumer.go config.go
 # 启动优先级任务生产者 (批量发送混合任务)
 go run priority_task_producer.go config.go
 ```
+
+## 4. 定时任务 (Periodic Task)
+
+- [定时任务调度器](periodic_task_scheduler.go)
+- [定时任务消费者](periodic_task_consumer.go)
+
+演示每隔 10 秒打印一句问候语。
+
+启动方式
+
+```shell
+# 启动定时任务消费者（处理实际逻辑）
+go run periodic_task_consumer.go config.go
+
+# 启动调度器（负责定时触发任务）
+go run periodic_task_scheduler.go config.go
+```

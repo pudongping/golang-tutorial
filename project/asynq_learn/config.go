@@ -13,9 +13,12 @@ const (
 	QueuePriorityPlatinum = "priority:email:platinum" // 铂金
 	QueuePriorityDiamond  = "priority:email:diamond"  // 钻石
 	QueuePriorityNormal   = "priority:email:normal"   // 普通
+	// 定时任务队列
+	QueuePeriodicTask = "periodic:greeting"
 )
 
 // 任务类型
 const (
-	TypeEmailSend = "email:send"
+	TypeEmailSend        = "email:send"
+	TypePeriodicGreeting = "periodic:greeting"
 )
