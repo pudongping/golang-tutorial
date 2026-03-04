@@ -107,6 +107,7 @@
 - [Prometheus 普罗米修斯 Go Client 使用](./project/Prometheus_learn)
 - [chromedp 驱动 Chrome DevTools](./project/chromedp_demo)
 - [hibiken/asynq 包实现异步任务队列、延迟队列、优先级队列、定时任务](./project/asynq_learn)
+- [Beanstalkd 包 beanstalkd/go-beanstalk 实现异步任务队列、延迟队列、优先级队列](./project/Beanstalkd_learn)
 
 ## LICENSE
 
