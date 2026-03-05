@@ -71,6 +71,7 @@ func main() {
 // processTask 模拟处理任务
 func processTask(id uint64, body []byte) {
 	spew.Dump("正在处理任务 ID:", id, "内容:", string(body))
+	fmt.Printf("任务执行开始时间 %s \n", time.Now().Format(time.DateTime))
 	// 模拟耗时操作
 	time.Sleep(500 * time.Millisecond)
 }
